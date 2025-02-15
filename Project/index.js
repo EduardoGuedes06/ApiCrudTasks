@@ -3,10 +3,10 @@ const cors = require('cors');
 const swaggerUi = require('swagger-ui-express');
 const jsdoc = require('swagger-jsdoc');
 require('dotenv').config();
-const taskRoutes = require('./Routes/TaskRoutes');
+const taskRoutes = require('./src/Routes/TaskRoutes');
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 
 const swaggerOptions = {
   definition: {
@@ -17,8 +17,9 @@ const swaggerOptions = {
       description: 'Uma API simples para gerenciar tarefas',
     },
   },
-  apis: ['./Routes/TaskRoutes.js'],
+  apis: ['./src/Routes/TaskRoutes.js'],
 };
+
 
 const swaggerDocs = jsdoc(swaggerOptions);
 
