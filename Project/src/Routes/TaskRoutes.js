@@ -2,6 +2,15 @@ const express = require('express');
 const taskController = require('../Domain/Task/Controllers/TaskController');
 const router = express.Router();
 
+
+/**
+ * @swagger
+ * tags:
+ *   name: Tarefas
+ *   description: API para gerenciar tarefas
+ */
+
+
 /**
  * @swagger
  * /api/tasks:

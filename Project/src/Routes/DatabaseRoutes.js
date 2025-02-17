@@ -2,6 +2,14 @@ const express = require('express');
 const databaseController = require('../Domain/DataBase/Controllers/DatabaseController');
 const router = express.Router();
 
+
+/**
+ * @swagger
+ * tags:
+ *   name: DataBase
+ *   description: Geração do Banco via ORM
+ */
+
 /**
  * @swagger
  * /api/database/create:

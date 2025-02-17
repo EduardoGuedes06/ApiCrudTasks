@@ -10,6 +10,10 @@ Installa o Swagger
 npm install swagger-ui-express jsdoc
 npm install swagger-jsdoc
 
+Instalar jest
+npm install --save-dev jest supertest
+
+
 Monitor de alterações
 npm install --save-dev nodemon
 

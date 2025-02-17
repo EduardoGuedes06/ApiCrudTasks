@@ -18,7 +18,7 @@ const swaggerOptions = {
       description: 'Uma simples API',
     },
   },
-  apis: ['./src/Routes/TaskRoutes.js', './src/Routes/DatabaseRoutes.js'],
+  apis: ['./src/Routes/TaskRoutes.js', './src/Routes/DatabaseRoutes.js', './src/Routes/TaskRoutes.test.js'],
 };
 
 const swaggerDocs = jsdoc(swaggerOptions);
