@@ -1,3 +1,4 @@
+--Ambiente--
 Instalar o Express
 npm install express pg sequelize dotenv cors
 npm install express sequelize pg
@@ -14,5 +15,19 @@ npm install --save-dev nodemon
 
 Cria ambiente de debug
 npm init -y
+
+Compile usando
+node index.js
+
+--Script do banco de dados--
+
+inicie o Terminal usando
+psql -U postgres
+
+Ou ultilize a interfaçe do Postgre
+
+Quary:
+
+
 
 

@@ -1,23 +1,20 @@
-const Task = require('../Entities/Task');
+const TaskModel = require('../../../Infrastructure/Database/Sequelize/TaskModel');
 
 class TaskRepository {
   async create({ title, description, status }) {
-    const task = await Task.create({ title, description, status });
-    return task;
+    return await TaskModel.create({ title, description, status });
   }
 
   async findAll() {
-    const tasks = await Task.findAll();
-    return tasks;
+    return await TaskModel.findAll();
   }
 
   async findById(id) {
-    const task = await Task.findByPk(id);
-    return task;
+    return await TaskModel.findByPk(id);
   }
 
   async update(id, { title, description, status }) {
-    const task = await Task.findByPk(id);
+    const task = await TaskModel.findByPk(id);
     if (!task) return null;
 
     task.title = title;
@@ -29,7 +26,7 @@ class TaskRepository {
   }
 
   async delete(id) {
-    const task = await Task.findByPk(id);
+    const task = await TaskModel.findByPk(id);
     if (!task) return null;
 
     await task.destroy();

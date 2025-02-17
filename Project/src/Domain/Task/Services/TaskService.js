@@ -1,34 +1,59 @@
-const TaskRepository = require('../Repositories/TaskRepositorie');
+const TaskRepository = require('../Repositories/TaskRepositoriy')
 
 class TaskService {
   async createTask({ title, description, status }) {
-    if (!title) {
-      throw new Error('Título da tarefa é obrigatório');
+    try {
+      if (!title) {
+        throw new Error('Título da tarefa é obrigatório');
+      }
+      return await TaskRepository.create({ title, description, status });
+    } catch (error) {
+      if (error.name === "SequelizeConnectionError" && error.parent?.code === "3D000") {
+        throw new Error('Crie o Banco primeiro, utilizando http://localhost:3000/api/database/create');
+      }
+      throw error;
     }
-
-    return await TaskRepository.create({ title, description, status });
   }
 
   async getAllTasks() {
-    return await TaskRepository.findAll();
+    try {
+      return await TaskRepository.findAll();
+    } catch (error) {
+      if (error.name === "SequelizeConnectionError" && error.parent?.code === "3D000") {
+        throw new Error('Crie o Banco primeiro, utilizando http://localhost:3000/api/database/create');
+      }
+      throw error;
+    }
   }
 
   async updateTask(id, { title, description, status }) {
-    const task = await TaskRepository.findById(id);
-    if (!task) {
-      throw new Error('Tarefa não encontrada');
+    try {
+      const task = await TaskRepository.findById(id);
+      if (!task) {
+        throw new Error('Tarefa não encontrada');
+      }
+      return await TaskRepository.update(id, { title, description, status });
+    } catch (error) {
+      if (error.name === "SequelizeConnectionError" && error.parent?.code === "3D000") {
+        throw new Error('Crie o Banco primeiro, utilizando http://localhost:3000/api/database/create');
+      }
+      throw error;
     }
-
-    return await TaskRepository.update(id, { title, description, status });
   }
 
   async deleteTask(id) {
-    const task = await TaskRepository.findById(id);
-    if (!task) {
-      throw new Error('Tarefa não encontrada');
+    try {
+      const task = await TaskRepository.findById(id);
+      if (!task) {
+        throw new Error('Tarefa não encontrada');
+      }
+      return await TaskRepository.delete(id);
+    } catch (error) {
+      if (error.name === "SequelizeConnectionError" && error.parent?.code === "3D000") {
+        throw new Error('Crie o Banco primeiro, utilizando http://localhost:3000/api/database/create');
+      }
+      throw error;
     }
-
-    return await TaskRepository.delete(id);
   }
 }
 

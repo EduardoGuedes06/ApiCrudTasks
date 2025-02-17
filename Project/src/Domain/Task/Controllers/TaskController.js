@@ -9,7 +9,11 @@ exports.createTask = async (req, res) => {
     res.status(201).json(task);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: error.message });
+    if (error.message.includes("Crie o Banco primeiro")) {
+      res.status(500).json({ message: error.message });
+    } else {
+      res.status(500).json({ message: 'Erro ao criar tarefa.', error });
+    }
   }
 };
 
@@ -19,7 +23,11 @@ exports.getAllTasks = async (req, res) => {
     res.status(200).json(tasks);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: 'Erro ao listar tarefas.', error });
+    if (error.message.includes("Crie o Banco primeiro")) {
+      res.status(500).json({ message: error.message });
+    } else {
+      res.status(500).json({ message: 'Erro ao listar tarefas.', error });
+    }
   }
 };
 
@@ -32,7 +40,11 @@ exports.updateTask = async (req, res) => {
     res.status(200).json(task);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: error.message });
+    if (error.message.includes("Crie o Banco primeiro")) {
+      res.status(500).json({ message: error.message });
+    } else {
+      res.status(500).json({ message: 'Erro ao atualizar tarefa.', error });
+    }
   }
 };
 
@@ -45,6 +57,10 @@ exports.deleteTask = async (req, res) => {
     res.status(200).json({ message: 'Tarefa deletada com sucesso.' });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: error.message });
+    if (error.message.includes("Crie o Banco primeiro")) {
+      res.status(500).json({ message: error.message });
+    } else {
+      res.status(500).json({ message: 'Erro ao deletar tarefa.', error });
+    }
   }
 };

@@ -23,8 +23,8 @@ const router = express.Router();
  *                 example: "Descrição da tarefa"
  *               status:
  *                 type: string
- *                 enum: [pending, in progress, completed]
- *                 example: "pending"
+ *                 enum: [Pendente, Em progresso, Concluída]
+ *                 example: "Pendente"
  *     responses:
  *       201:
  *         description: Tarefa criada com sucesso
@@ -91,7 +91,7 @@ router.get('/tasks', taskController.getAllTasks);
  *                 type: string
  *               status:
  *                 type: string
- *                 enum: [pending, in progress, completed]
+ *                 enum: [Pendente, Em progresso, Concluída]
  *     responses:
  *       200:
  *         description: Tarefa atualizada com sucesso
