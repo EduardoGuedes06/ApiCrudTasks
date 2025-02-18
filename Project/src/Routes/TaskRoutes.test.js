@@ -1,7 +1,9 @@
 const request = require('supertest');
-const app = require('../app');
+const apiUrl = 'http://localhost:3000';
 
 describe('Testes de integração das rotas de tarefas', () => {
+  let taskId;
+
   describe('POST /tasks', () => {
     it('Deve criar uma nova tarefa', async () => {
       const taskData = {
@@ -10,22 +12,22 @@ describe('Testes de integração das rotas de tarefas', () => {
         status: 'Pendente',
       };
 
-      const response = await request(app)
-        .post('/tasks')
+      const response = await request(apiUrl)
+        .post('/api/tasks')
         .send(taskData);
 
       expect(response.status).toBe(201);
       expect(response.body.title).toBe(taskData.title);
       expect(response.body.description).toBe(taskData.description);
       expect(response.body.status).toBe(taskData.status);
+      
+      taskId = response.body.id;
     });
   });
 
-
   describe('GET /tasks', () => {
     it('Deve listar todas as tarefas', async () => {
-      const response = await request(app)
-        .get('/tasks');
+      const response = await request(apiUrl).get('/api/tasks');
 
       expect(response.status).toBe(200);
       expect(Array.isArray(response.body)).toBe(true);
@@ -40,8 +42,8 @@ describe('Testes de integração das rotas de tarefas', () => {
         status: 'Concluída',
       };
 
-      const response = await request(app)
-        .put('/tasks/1')
+      const response = await request(apiUrl)
+        .put(`/api/tasks/${taskId}`)
         .send(taskData);
 
       expect(response.status).toBe(200);
@@ -51,11 +53,9 @@ describe('Testes de integração das rotas de tarefas', () => {
     });
   });
 
-
   describe('DELETE /tasks/:id', () => {
     it('Deve deletar uma tarefa existente', async () => {
-      const response = await request(app)
-        .delete('/tasks/1');
+      const response = await request(apiUrl).delete(`/api/tasks/${taskId}`);
 
       expect(response.status).toBe(200);
       expect(response.body.message).toBe('Tarefa deletada com sucesso.');

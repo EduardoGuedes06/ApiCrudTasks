@@ -23,6 +23,9 @@ npm init -y
 Compile usando
 node index.js
 
+Compile os testes usando
+npm test
+
 --Script do banco de dados--
 
 inicie o Terminal usando
