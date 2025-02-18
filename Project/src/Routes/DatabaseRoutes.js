@@ -2,12 +2,11 @@ const express = require('express');
 const databaseController = require('../Domain/DataBase/Controllers/DatabaseController');
 const router = express.Router();
 
-
 /**
  * @swagger
  * tags:
- *   name: DataBase
- *   description: Geração do Banco via ORM
+ *   - name: DataBase
+ *     description: Geração do Banco via ORM
  */
 
 /**
@@ -16,6 +15,8 @@ const router = express.Router();
  *   get:
  *     summary: Cria o banco de dados e as tabelas
  *     description: Cria o banco de dados e a tabela tasks, apagando tudo existente
+ *     tags:
+ *       - DataBase
  *     responses:
  *       200:
  *         description: Banco de dados e tabela criados com sucesso

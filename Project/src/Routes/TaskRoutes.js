@@ -2,14 +2,12 @@ const express = require('express');
 const taskController = require('../Domain/Task/Controllers/TaskController');
 const router = express.Router();
 
-
 /**
  * @swagger
  * tags:
- *   name: Tarefas
- *   description: API para gerenciar tarefas
+ *   - name: Tarefas
+ *     description: API para gerenciar tarefas
  */
-
 
 /**
  * @swagger
@@ -17,6 +15,8 @@ const router = express.Router();
  *   post:
  *     summary: Cria uma nova tarefa
  *     description: Cria uma tarefa com título, descrição e status
+ *     tags:
+ *       - Tarefas
  *     requestBody:
  *       required: true
  *       content:
@@ -48,6 +48,8 @@ router.post('/tasks', taskController.createTask);
  *   get:
  *     summary: Lista todas as tarefas
  *     description: Retorna uma lista com todas as tarefas cadastradas
+ *     tags:
+ *       - Tarefas
  *     responses:
  *       200:
  *         description: Lista de tarefas
@@ -80,6 +82,8 @@ router.get('/tasks', taskController.getAllTasks);
  *   put:
  *     summary: Atualiza uma tarefa existente
  *     description: Atualiza o título, descrição e status de uma tarefa
+ *     tags:
+ *       - Tarefas
  *     parameters:
  *       - in: path
  *         name: id
@@ -117,6 +121,8 @@ router.put('/tasks/:id', taskController.updateTask);
  *   delete:
  *     summary: Deleta uma tarefa
  *     description: Deleta uma tarefa existente pelo ID
+ *     tags:
+ *       - Tarefas
  *     parameters:
  *       - in: path
  *         name: id

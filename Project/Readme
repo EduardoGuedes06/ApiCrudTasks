@@ -1,1 +1,36 @@
-proj
+--Ambiente--
+Instalar o Express
+npm install express pg sequelize dotenv cors
+npm install express sequelize pg
+
+Instalar o Postgre
+npm install sequelize pg-hstore
+
+Installa o Swagger
+npm install swagger-ui-express jsdoc
+npm install swagger-jsdoc
+
+Instalar jest
+npm install --save-dev jest supertest
+
+Instalar o json webToken
+npm install jsonwebtoken bcryptjs
+
+Monitor de alterações
+npm install --save-dev nodemon
+
+Cria ambiente de debug
+npm init -y
+
+Compile usando
+node index.js
+
+Compile os testes usando
+npm test
+
+--Script do banco de dados--
+
+inicie o Terminal usando
+psql -U postgres
+
+Ou ultilize a interfaçe do Postgre
