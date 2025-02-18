@@ -28,15 +28,19 @@ npm install swagger-jsdoc
 npm install --save-dev jest supertest
 npm install jsonwebtoken bcryptjs
 npm install --save-dev nodemon
+```
 
 ### 2. Configurar o Ambiente
 
-Para que o projeto funcione corretamente, é necessário configurar o arquivo `.env` na raiz do proj com uma conexão de banco postgree , elembrando, ALtere somentre: DB_HOST, DB_PORT, DB_USER, DB_PASSWORD
+Para que o projeto funcione corretamente, é necessário configurar o arquivo `.env` na raiz do projeto com uma conexão de banco PostgreSQL, lembrando, altere somente: **DB_HOST, DB_PORT, DB_USER, DB_PASSWORD**.
 
 ### 3. Executar os Testes
 
 Para rodar os testes, execute:
+
+```bash
 npm test
+```
 
 ### 4. Swagger
 A documentação da API está disponível no Swagger. Para acessá-la, inicie o servidor e acesse a URL:
