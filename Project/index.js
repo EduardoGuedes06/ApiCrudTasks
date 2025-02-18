@@ -19,6 +19,15 @@ const swaggerOptions = {
       version: '1.0.0',
       description: 'Uma simples API',
     },
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT',
+        },
+      },
+    },
   },
   apis: ['./src/Routes/TaskRoutes.js', './src/Routes/DatabaseRoutes.js', './src/Routes/AuthRoutes.js'],
 };

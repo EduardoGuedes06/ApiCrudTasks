@@ -1,10 +1,6 @@
-const express = require('express');
 const jwt = require('jsonwebtoken');
-const authMiddleware = require('../Middleware/authMiddleware');
-require('dotenv').config();
-
+const express = require('express');
 const router = express.Router();
-
 
 /**
  * @swagger
@@ -15,7 +11,7 @@ const router = express.Router();
 
 /**
  * @swagger
- * /api/auth/login:
+ * /api/auth:
  *   get:
  *     summary: Gera um token JWT
  *     description: Gerar um token JWT para acesso às rotas protegidas
@@ -33,10 +29,17 @@ const router = express.Router();
  *                   type: string
  *                   example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
  */
-router.get('/protected', authMiddleware, (req, res) => {
-    res.json({
-      message: 'Você tem acesso à rota protegida!',
-    });
-  });
+router.get('/auth', (req, res) => {
+
+  const user = { username: 'admin' };  // Exemplo de usuário
+
+  const token = jwt.sign(
+    { username: user.username },
+    process.env.JWT_SECRET,
+    { expiresIn: '2h' }
+  );
+
+  res.json({ token });
+});
 
 module.exports = router;

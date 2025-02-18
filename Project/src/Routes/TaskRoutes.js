@@ -1,5 +1,6 @@
 const express = require('express');
 const taskController = require('../Domain/Task/Controllers/TaskController');
+const authMiddleware = require('../Middleware/authMiddleware');
 const router = express.Router();
 
 /**
@@ -17,6 +18,8 @@ const router = express.Router();
  *     description: Cria uma tarefa com título, descrição e status
  *     tags:
  *       - Tarefas
+ *     security:
+ *       - bearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -40,7 +43,7 @@ const router = express.Router();
  *       500:
  *         description: Erro ao criar tarefa
  */
-router.post('/tasks', taskController.createTask);
+router.post('/tasks', authMiddleware, taskController.createTask);
 
 /**
  * @swagger
@@ -50,6 +53,8 @@ router.post('/tasks', taskController.createTask);
  *     description: Retorna uma lista com todas as tarefas cadastradas
  *     tags:
  *       - Tarefas
+ *     security:
+ *       - bearerAuth: []
  *     responses:
  *       200:
  *         description: Lista de tarefas
@@ -74,7 +79,7 @@ router.post('/tasks', taskController.createTask);
  *       500:
  *         description: Erro ao listar tarefas
  */
-router.get('/tasks', taskController.getAllTasks);
+router.get('/tasks', authMiddleware, taskController.getAllTasks);
 
 /**
  * @swagger
@@ -84,6 +89,8 @@ router.get('/tasks', taskController.getAllTasks);
  *     description: Atualiza o título, descrição e status de uma tarefa
  *     tags:
  *       - Tarefas
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -113,7 +120,7 @@ router.get('/tasks', taskController.getAllTasks);
  *       500:
  *         description: Erro ao atualizar tarefa
  */
-router.put('/tasks/:id', taskController.updateTask);
+router.put('/tasks/:id', authMiddleware, taskController.updateTask);
 
 /**
  * @swagger
@@ -123,6 +130,8 @@ router.put('/tasks/:id', taskController.updateTask);
  *     description: Deleta uma tarefa existente pelo ID
  *     tags:
  *       - Tarefas
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -138,6 +147,6 @@ router.put('/tasks/:id', taskController.updateTask);
  *       500:
  *         description: Erro ao deletar tarefa
  */
-router.delete('/tasks/:id', taskController.deleteTask);
+router.delete('/tasks/:id', authMiddleware, taskController.deleteTask);
 
 module.exports = router;
