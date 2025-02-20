@@ -1,8 +1,13 @@
-import { AppRoutes } from "./routes/appRoutes";
-import { TaskProvider } from "./context/TaskContext";
+import React from 'react';
+import { TaskProvider } from './context/TaskContext';
+import { TaskPage } from './components/taskPage';
 
-export const App = () => (
-  <TaskProvider>
-    <AppRoutes />
-  </TaskProvider>
-);
+const App: React.FC = () => {
+  return (
+    <TaskProvider>
+      <TaskPage />
+    </TaskProvider>
+  );
+};
+
+export default App;

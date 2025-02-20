@@ -1,33 +1,38 @@
-import { Task } from "../models/taskModel";
+import { Task } from '../models/taskModel';
+import { useTaskContext } from '../context/TaskContext';
 
-let tasksCache: Task[] = [];
+export const TaskService = () => {
+  const { tasks, addTask, updateTask, deleteTask } = useTaskContext();
 
-export const TaskService = {
-  getAllTasks: (): Task[] => {
-    return tasksCache;
-  },
+  const saveTasksToLocalStorage = () => {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  };
 
-  createTask: (task: Omit<Task, 'id' | 'createdAt'>): Task => {
-    const newTask: Task = {
-      ...task,
-      id: tasksCache.length + 1,
-      createdAt: new Date().toISOString(),
-    };
-    tasksCache.push(newTask);
-    return newTask;
-  },
+  const getAllTasks = () => {
+    debugger
+    return JSON.parse(localStorage.getItem('tasks') || '[]') as Task[];
+  };
 
-  updateTask: (id: number, updatedTask: Partial<Task>): Task | null => {
-    const taskIndex = tasksCache.findIndex(task => task.id === id);
-    if (taskIndex === -1) return null;
-    tasksCache[taskIndex] = { ...tasksCache[taskIndex], ...updatedTask };
-    return tasksCache[taskIndex];
-  },
+  const createTask = (task: Task) => {
+    debugger
+    addTask(task);
+    saveTasksToLocalStorage();
+  };
 
-  deleteTask: (id: number): boolean => {
-    const taskIndex = tasksCache.findIndex(task => task.id === id);
-    if (taskIndex === -1) return false;
-    tasksCache.splice(taskIndex, 1);
-    return true;
-  },
+  const updateTaskStatus = (task: Task) => {
+    updateTask(task);
+    saveTasksToLocalStorage();
+  };
+
+  const deleteTaskById = (taskId: string) => {
+    deleteTask(taskId);
+    saveTasksToLocalStorage();
+  };
+
+  return {
+    getAllTasks,
+    createTask,
+    updateTaskStatus,
+    deleteTaskById,
+  };
 };

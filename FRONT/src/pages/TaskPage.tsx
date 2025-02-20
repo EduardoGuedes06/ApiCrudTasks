@@ -1,14 +1,17 @@
-import { useTask } from "../context/TaskContext";
+import React from 'react';
+import { useTaskContext } from '../context/TaskContext';
 
-export const TaskPage = () => {
-  const { tasks } = useTask();
+export const TaskPage: React.FC = () => {
+  const { tasks } = useTaskContext();
 
   return (
     <div>
       <h1>Lista de Tarefas</h1>
       <ul>
         {tasks.map((task) => (
-          <li key={task.id}>{task.title}</li>
+          <li key={task.id}>
+            {task.title} - {task.status}
+          </li>
         ))}
       </ul>
     </div>
