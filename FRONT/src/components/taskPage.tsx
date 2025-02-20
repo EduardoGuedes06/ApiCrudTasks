@@ -34,17 +34,17 @@ export const TaskPage: React.FC<TaskPageProps> = ({ isMenuOpen, authToken }) => 
       NotificationService.error("Título e descrição são obrigatórios!");
       return;
     }
-  
+
     const newTaskData = {
       title: newTaskTitle,
       description: newTaskDescription,
       status: newTaskStatus,
     };
-  
+
     try {
       const createdTask = await taskService.createTask(newTaskData);
       if (!createdTask) throw new Error("Tarefa não foi criada corretamente");
-  
+
       setTasks((prev) => [...prev, createdTask]); // Garante que createdTask é válido
       setNewTaskTitle("");
       setNewTaskDescription("");
@@ -53,7 +53,7 @@ export const TaskPage: React.FC<TaskPageProps> = ({ isMenuOpen, authToken }) => 
       NotificationService.error("Erro ao criar a tarefa.");
     }
   };
-  
+
 
   const handleUpdateTask = async (id: string) => {
     if (!authToken) {
@@ -140,7 +140,9 @@ export const TaskPage: React.FC<TaskPageProps> = ({ isMenuOpen, authToken }) => 
           <li key={task.id} className="list-group-item d-flex justify-content-between align-items-center">
             <div>
               <h5>{task.title}</h5>
-              <p className="text-muted">{task.status}</p>
+              <p className={`text-muted ${task.status === "Pendente" ? "status-pendente" : task.status === "Em andamento" ? "status-em-andamento" : "status-concluida"}`}>
+                {task.status}
+              </p>
               <small>Criada em: {new Date(task.createdAt).toLocaleString()}</small>
               <br />
               <small>Última atualização: {task.updatedAt ? new Date(task.updatedAt).toLocaleString() : "Ainda não atualizada"}</small>

@@ -1,114 +1,108 @@
 :root {
-    --primary-color: rgb(76,159,255);
-    --secondary-color: rgb(29,166,227);
-    --background-color: rgb(255,255,255);
-    --text-color: rgb(42,50,54);
-    --button-color: rgb(0,225,165);
-    --border-color: rgb(144,156,158);
+  --primary-color: rgb(76,159,255);
+  --secondary-color: rgb(29,166,227);
+  --background-color: rgb(245, 247, 250);
+  --text-color: rgb(42,50,54);
+  --button-color: rgb(0,225,165);
+  --border-color: rgb(200, 210, 215);
+  --card-bg: rgb(255, 255, 255);
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --status-pendente: rgb(255, 165, 0);
+  --status-em-andamento: rgb(76, 159, 255);
+  --status-concluida: rgb(0, 200, 100);
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: 'Arial', sans-serif;
+}
+
+h1, h5 {
+  color: var(--text-color);
+}
+
+.task-form {
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px var(--shadow-color);
+  margin-bottom: 20px;
+}
+
+.task-form input,
+.task-form textarea,
+.task-form select {
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.task-form button {
+  background-color: var(--button-color);
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 6px;
+  transition: background 0.3s;
+}
+
+.task-form button:hover {
+  background-color: var(--secondary-color);
+}
+
+.list-group-item {
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--card-bg);
+  box-shadow: 0px 2px 4px var(--shadow-color);
+  padding: 15px;
+  margin-bottom: 10px;
+}
+
+.list-group-item h5 {
+  color: var(--text-color);
+  margin-bottom: 5px;
+}
+
+.list-group-item p {
+  font-size: 14px;
+  color: gray;
+}
+
+.list-group-item .btn {
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 6px;
+  padding: 8px 12px;
+  transition: background 0.3s;
+}
+
+.list-group-item .btn:hover {
+  background-color: var(--secondary-color);
+}
+
+.status-pendente {
+  color: orange;
+}
+
+.status-em-andamento {
+  color: blue;
+}
+
+.status-concluida {
+  color: green;
+}
+
+
+@media (max-width: 767px) {
+  .task-form {
+    padding: 15px;
   }
-  
-  body {
-    background-color: var(--background-color);
-    color: var(--text-color);
-    font-family: 'Arial', sans-serif;
-  }
-  
-  h1, h5 {
-    color: var(--text-color);
-  }
-  
-  .navbar-toggler {
-    border-color: var(--secondary-color);
-  }
-  
-  .navbar-nav .nav-link {
-    color: var(--secondary-color);
-  }
-  
-  .navbar-nav .nav-link:hover {
-    color: var(--primary-color);
-  }
-  
-  .task-form input,
-  .task-form textarea,
-  .task-form select {
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-  }
-  
-  .task-form button {
-    background-color: var(--button-color);
-    border: none;
-    color: white;
-  }
-  
-  .task-form button:hover {
-    background-color: var(--secondary-color);
-  }
-  
+
   .list-group-item {
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    background-color: var(--background-color);
+    padding: 10px;
   }
-  
-  .list-group-item h5 {
-    color: var(--text-color);
-  }
-  
-  .list-group-item .btn {
-    background-color: var(--primary-color);
-    color: white;
-  }
-  
-  .list-group-item .btn:hover {
-    background-color: var(--secondary-color);
-  }
-  
-  @media (max-width: 767px) {
-    .navbar-nav {
-      background-color: var(--secondary-color);
-      position: absolute;
-      top: 0;
-      right: 0;
-      left: 0;
-    }
-  
-    .navbar-nav .nav-item {
-      text-align: center;
-      margin: 10px 0;
-    }
-  }
-  
-  /* Ajuste para garantir que o ícone do hamburger fique visível */
-  .navbar-toggler {
-    border: none;
-    background: transparent;
-  }
-  
-  .navbar-toggler-icon {
-    background-color: #fff;
-    width: 30px; /* Ajuste o tamanho do ícone se necessário */
-    height: 3px; /* A espessura da linha */
-    display: block;
-    position: relative;
-  }
-  
-  .navbar-toggler-icon:before,
-  .navbar-toggler-icon:after {
-    content: '';
-    position: absolute;
-    width: 30px;
-    height: 3px;
-    background-color: white;
-    left: 0;
-  }
-  
-  .navbar-toggler-icon:before {
-    top: -8px;
-  }
-  
-  .navbar-toggler-icon:after {
-    top: 8px;
-  }
-  
+}

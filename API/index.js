@@ -17,7 +17,7 @@ const swaggerOptions = {
     info: {
       title: 'Tasks API',
       version: '1.0.0',
-      description: 'Uma simples API',
+      description: 'MosaiQ Teste',
     },
     components: {
       securitySchemes: {
