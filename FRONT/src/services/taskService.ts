@@ -9,12 +9,10 @@ export const TaskService = () => {
   };
 
   const getAllTasks = () => {
-    debugger
     return JSON.parse(localStorage.getItem('tasks') || '[]') as Task[];
   };
 
   const createTask = (task: Task) => {
-    debugger
     addTask(task);
     saveTasksToLocalStorage();
   };
