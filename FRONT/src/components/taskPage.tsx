@@ -6,7 +6,11 @@ import { NotificationService } from '../services/notificationService';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../styles/TaskPage.css";
 
-export const TaskPage: React.FC = () => {
+interface TaskPageProps {
+  isMenuOpen: boolean;
+}
+
+export const TaskPage: React.FC<TaskPageProps> = ({ isMenuOpen }) => {
   const taskService = TaskService();
   const [newTaskTitle, setNewTaskTitle] = useState('');
   const [newTaskDescription, setNewTaskDescription] = useState('');
@@ -38,7 +42,7 @@ export const TaskPage: React.FC = () => {
     setTasks([...tasks, newTask]);
     setNewTaskTitle('');
     setNewTaskDescription('');
-    NotificationService.success('Tarefa criada com sucesso!');
+    NotificationService.success('Token Obtido com Sucesso!');
   };
 
   const handleUpdateTask = (id: string) => {
@@ -69,7 +73,7 @@ export const TaskPage: React.FC = () => {
 
   return (
     <div className="container mt-5">
-      <h1 className="mb-4 text-center">Tarefas</h1>
+      <h1 className="mb-4 text-center">Suas Tarefas</h1>
 
       <div className="task-form mb-4">
         <input
@@ -78,6 +82,7 @@ export const TaskPage: React.FC = () => {
           onChange={e => setNewTaskTitle(e.target.value)}
           placeholder="Título da nova tarefa"
           className="form-control mb-2"
+          disabled={isMenuOpen}
         />
         <textarea
           value={newTaskDescription}
@@ -85,21 +90,27 @@ export const TaskPage: React.FC = () => {
           placeholder="Descrição da nova tarefa"
           maxLength={55}
           className="form-control mb-2"
+          disabled={isMenuOpen}
         />
         <select
           value={newTaskStatus}
           onChange={e => setNewTaskStatus(e.target.value as 'Pendente' | 'Em andamento' | 'Concluída')}
           className="form-control mb-2"
+          disabled={isMenuOpen}
         >
           <option value="Pendente">Pendente</option>
           <option value="Em andamento">Em andamento</option>
           <option value="Concluída">Concluída</option>
         </select>
-        <button onClick={handleCreateTask} className="btn btn-primary w-100">
+        <button
+          onClick={handleCreateTask}
+          className="btn btn-primary w-100"
+          disabled={isMenuOpen}
+        >
           Criar Tarefa
         </button>
       </div>
-
+      <hr className="separator" />
       <ul className="list-group">
         {tasks.map(task => (
           <li key={task.id} className="list-group-item d-flex justify-content-between align-items-center">
@@ -115,25 +126,36 @@ export const TaskPage: React.FC = () => {
                 defaultValue={task.title}
                 onChange={e => setNewTaskTitle(e.target.value)}
                 className="form-control"
+                disabled={isMenuOpen}
               />
               <textarea
                 defaultValue={task.description}
                 onChange={e => setNewTaskDescription(e.target.value)}
                 className="form-control"
+                disabled={isMenuOpen}
               />
               <select
                 value={selectedTaskStatus || task.status}
                 onChange={e => setSelectedTaskStatus(e.target.value as 'Pendente' | 'Em andamento' | 'Concluída')}
                 className="form-control"
+                disabled={isMenuOpen}
               >
                 <option value="Pendente">Pendente</option>
                 <option value="Em andamento">Em andamento</option>
                 <option value="Concluída">Concluída</option>
               </select>
-              <button onClick={() => handleUpdateTask(task.id)} className="btn btn-success">
+              <button
+                onClick={() => handleUpdateTask(task.id)}
+                className="btn btn-success"
+                disabled={isMenuOpen}
+              >
                 Atualizar
               </button>
-              <button onClick={() => handleDeleteTask(task.id)} className="btn btn-danger">
+              <button
+                onClick={() => handleDeleteTask(task.id)}
+                className="btn btn-danger"
+                disabled={isMenuOpen}
+              >
                 Deletar
               </button>
             </div>

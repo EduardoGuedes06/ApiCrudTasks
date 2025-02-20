@@ -1,12 +1,14 @@
+/* Resetando as margens e ajustando a caixa de dimensionamento */
 * {
     margin: 0;
     box-sizing: border-box;
 }
 
+/* Estilo para o nav */
 nav {
     width: 100%;
     height: 5em;
-    background-color: rgb(37, 39, 53);
+    background-color: rgb(42,50,54);
     display: flex;
     justify-content: flex-start;
     padding: 1em;
@@ -14,6 +16,7 @@ nav {
     z-index: 20;
 }
 
+/* Estilo do menu burger */
 .burger-menu {
     height: 100%;
     width: 4em;
@@ -24,6 +27,7 @@ nav {
     cursor: pointer;
 }
 
+/* Estilo das barras do menu burger */
 .burger-bar {
     width: 4em;
     height: 0.5em;
@@ -32,8 +36,9 @@ nav {
     transition: transform 0.5s ease;
 }
 
+/* Estilo do menu */
 .menu {
-    width: 50%;
+    width: 15%;
     height: 100vh;
     background-color: rgb(154, 181, 240);
     position: absolute;
@@ -41,26 +46,32 @@ nav {
     left: 0;
     z-index: 10;
     transition: transform 0.5s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centraliza o conteúdo no eixo vertical */
+    align-items: center; /* Centraliza o conteúdo no eixo horizontal */
 }
 
+/* Esconde o menu */
 .hidden {
     transform: translateX(-100%);
     opacity: 0;
 }
 
+/* Exibe o menu */
 .visible {
     transform: translateX(0);
     opacity: 1;
 }
 
-/* Adicionando efeito de escurecimento na TaskPage */
+/* Adicionando efeito de escurecimento na TaskPage quando o menu está visível */
 .menu.visible ~ .content {
     filter: blur(5px);
     opacity: 0.5;
     transition: opacity 0.5s ease, filter 0.5s ease;
 }
 
-/* ----- animações do botão --------- */
+/* Animações do botão do menu burger quando clicado */
 .burger-bar.clicked:nth-child(1) {
     transform: rotate(45deg) translate(0.75em, 1.25em);
 }
@@ -76,3 +87,73 @@ nav {
 .burger-bar.unclicked {
     transform: rotate(0) translate(0);
 }
+
+/* Estilo para o botão "Obter Token" */
+.menu button {
+    background-color: rgb(0, 183, 255); /* Cor do botão */
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 10px; /* Bordas arredondadas */
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombras suaves */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: flex;
+    align-items: center; /* Alinha o ícone do botão com o texto */
+    justify-content: center;
+    margin-top: 20px; /* Espaçamento superior */
+}
+
+/* Efeito de hover no botão */
+.menu button:hover {
+    background-color: rgb(0, 153, 204); /* Cor ao passar o mouse */
+    transform: scale(1.05); /* Leve aumento no botão */
+}
+
+/* Estilo do ícone dentro do botão */
+.menu button i {
+    margin-right: 10px; /* Espaçamento entre o ícone e o texto */
+}
+
+/* Estilo do botão moderno */
+.btn-modern {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #007bff; /* Azul sério e profissional */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .btn-modern i {
+    margin-right: 8px; /* Espaço entre o ícone e o texto */
+  }
+  
+  .btn-modern:hover {
+    background-color: #0056b3; /* Escurece um pouco na interação */
+    cursor: pointer;
+  }
+  
+  .btn-modern:focus {
+    outline: none; /* Remove a borda azul padrão do botão */
+  }
+  
+  .btn-modern:disabled {
+    background-color: #ccc; /* Cor para o estado desabilitado */
+    cursor: not-allowed;
+  }
+  
+  /* Garantindo responsividade do botão */
+  @media (max-width: 768px) {
+    .btn-modern {
+      width: 100%;
+    }
+  }
+  
