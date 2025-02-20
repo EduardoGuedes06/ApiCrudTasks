@@ -8,9 +8,10 @@ import "../styles/TaskPage.css";
 
 interface TaskPageProps {
   isMenuOpen: boolean;
+  authToken: string | null;
 }
 
-export const TaskPage: React.FC<TaskPageProps> = ({ isMenuOpen }) => {
+export const TaskPage: React.FC<TaskPageProps> = ({ isMenuOpen, authToken }) => {
   const taskService = TaskService();
   const [newTaskTitle, setNewTaskTitle] = useState('');
   const [newTaskDescription, setNewTaskDescription] = useState('');
@@ -24,6 +25,11 @@ export const TaskPage: React.FC<TaskPageProps> = ({ isMenuOpen }) => {
   }, []);
 
   const handleCreateTask = () => {
+    if (!authToken) {
+      NotificationService.error("Por favor, obtenha um token para continuar.");
+      return;
+    }
+
     if (!newTaskTitle || !newTaskDescription) {
       NotificationService.error('Título e descrição são obrigatórios!');
       return;
@@ -42,12 +48,15 @@ export const TaskPage: React.FC<TaskPageProps> = ({ isMenuOpen }) => {
     setTasks([...tasks, newTask]);
     setNewTaskTitle('');
     setNewTaskDescription('');
-    NotificationService.success('Token Obtido com Sucesso!');
+    NotificationService.success('Tarefa criada com sucesso!');
   };
 
   const handleUpdateTask = (id: string) => {
     const taskToUpdate = tasks.find(task => task.id === id);
-
+    if (!authToken) {
+      NotificationService.error("Por favor, obtenha um token para continuar.");
+      return;
+    }
     if (taskToUpdate) {
       const updatedTask: Task = {
         ...taskToUpdate,
@@ -66,6 +75,10 @@ export const TaskPage: React.FC<TaskPageProps> = ({ isMenuOpen }) => {
   };
 
   const handleDeleteTask = (id: string) => {
+    if (!authToken) {
+      NotificationService.error("Por favor, obtenha um token para continuar.");
+      return;
+    }
     taskService.deleteTaskById(id);
     setTasks(tasks.filter(task => task.id !== id));
     NotificationService.success('Tarefa deletada com sucesso!');
