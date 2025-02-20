@@ -31,6 +31,7 @@ export const TaskProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   };
 
   const addTask = (task: Task | Task[]) => {
+    debugger
     if (Array.isArray(task)) {
       setTasks(prevTasks => {
         const newTasks = [...prevTasks, ...task];

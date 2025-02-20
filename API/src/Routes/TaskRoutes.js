@@ -53,8 +53,6 @@ router.post('/tasks', authMiddleware, taskController.createTask);
  *     description: Retorna uma lista com todas as tarefas cadastradas
  *     tags:
  *       - Tarefas
- *     security:
- *       - bearerAuth: []
  *     responses:
  *       200:
  *         description: Lista de tarefas
@@ -79,7 +77,7 @@ router.post('/tasks', authMiddleware, taskController.createTask);
  *       500:
  *         description: Erro ao listar tarefas
  */
-router.get('/tasks', authMiddleware, taskController.getAllTasks);
+router.get('/tasks', taskController.getAllTasks);
 
 /**
  * @swagger
