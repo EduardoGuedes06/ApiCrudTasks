@@ -1,5 +1,11 @@
 # Getting Started with Create React App
 
+Dependences:
+npm install react-router-dom axios react-hook-form zod styled-components
+npm install @types/styled-components
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
