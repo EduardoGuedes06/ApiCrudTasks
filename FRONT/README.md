@@ -14,22 +14,12 @@ npm install bootstrap font-awesome react-toastify react-scripts web-vitals types
 
 ## Scripts Disponíveis
 
-No diretório do projeto, você pode rodar os seguintes comandos:
+comandos:
 
 ### `npm start`
 
 Inicia o app no modo de desenvolvimento.  
 Abra [http://localhost:3001](http://localhost:3001) para visualizar no navegador.
-
-A página será recarregada automaticamente caso você faça alterações.  
-Além disso, qualquer erro de lint será exibido no console.
-
-
-**Atenção:** Este comando é irreversível. Uma vez que você executar o `eject`, não poderá voltar atrás.
-
-Se você não estiver satisfeito com as configurações de build, pode usar o `eject` para obter controle total sobre todas as configurações do projeto (Webpack, Babel, ESLint, etc.). Após o `eject`, você será responsável por gerenciar essas configurações.
-
-Você não precisa usar o `eject`, a configuração padrão é adequada para a maioria dos projetos.
 
 ---
 
