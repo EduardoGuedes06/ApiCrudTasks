@@ -7,6 +7,9 @@ Para instalar as dependências necessárias, execute o comando:
 ```bash
 npm install react-router-dom axios react-hook-form zod styled-components
 npm install @types/styled-components
+npm install @testing-library/dom @testing-library/jest-dom @testing-library/react @testing-library/user-event
+npm install @types/jest @types/node @types/react @types/react-dom
+npm install bootstrap font-awesome react-toastify react-scripts web-vitals typescript
 ```
 
 ## Scripts Disponíveis
