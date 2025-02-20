@@ -11,9 +11,6 @@ Este projeto consiste em um sistema de gestão de tarefas, dividido em duas part
 
 A arquitetura do sistema é baseada no modelo cliente-servidor, onde o frontend se comunica com a API (backend) para realizar operações de CRUD em tarefas.
 
-![Arquitetura do Sistema](https://via.placeholder.com/500x300.png?text=Arquitetura+do+Sistema)  
-*Diagrama de Arquitetura*
-
 ### Fluxo de Dados
 
 1. O **Frontend** (React) envia solicitações para a **API** para criar, ler, atualizar ou excluir tarefas.
@@ -72,6 +69,9 @@ Para instalar as dependências do frontend, execute:
 ```bash
 npm install react-router-dom axios react-hook-form zod styled-components
 npm install @types/styled-components
+npm install @testing-library/dom @testing-library/jest-dom @testing-library/react @testing-library/user-event
+npm install @types/jest @types/node @types/react @types/react-dom
+npm install bootstrap font-awesome react-toastify react-scripts web-vitals typescript
 ```
 
 ### Scripts Disponíveis
@@ -100,9 +100,6 @@ O frontend interage com a API para:
 | status       | ENUM        | Status da tarefa (Pendente, Em andamento, Concluída) |
 | createdAt    | TIMESTAMP   | Data e hora de criação da tarefa                |
 | updatedAt    | TIMESTAMP   | Data e hora da última atualização da tarefa     |
-
-**Diagrama da Tabela de Tarefas**  
-![Diagrama do Banco de Dados](https://via.placeholder.com/500x300.png?text=Diagrama+do+Banco+de+Dados)
 
 ---
 
